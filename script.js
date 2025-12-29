@@ -1,43 +1,27 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // 1. Seleciona os elementos principais
-    const menuIcon = document.getElementById('menu-icon'); // Ícone de hambúrguer
-    const closeIcon = document.getElementById('close-icon'); // Ícone de fechar (X)
-    const sideMenu = document.getElementById('side-menu'); // O menu lateral
-    const navbar = document.querySelector('.navbar'); // A barra de navegação (para possíveis ajustes)
+  document.addEventListener('DOMContentLoaded', () => {
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
+    const sideMenu = document.getElementById('side-menu');
+    const overlay = document.getElementById('overlay'); // Adicionado o overlay
 
-    // 2. Função para abrir o menu lateral
-    function openMenu() {
-        sideMenu.classList.add('open'); // Adiciona a classe 'open'
-        menuIcon.style.display = 'none'; // Esconde o ícone de hambúrguer
-        closeIcon.style.display = 'block'; // Mostra o ícone de fechar
-        navbar.classList.add('menu-open'); // Adiciona classe à navbar para ajustes de estilo se necessário
+    function toggleMenu() {
+        sideMenu.classList.toggle('open');
+        menuIcon.style.display = sideMenu.classList.contains('open') ? 'none' : 'block';
+        closeIcon.style.display = sideMenu.classList.contains('open') ? 'block' : 'none';
+        overlay.style.display = sideMenu.classList.contains('open') ? 'block' : 'none';
     }
 
-    // 3. Função para fechar o menu lateral
-    function closeMenu() {
-        sideMenu.classList.remove('open'); // Remove a classe 'open'
-        menuIcon.style.display = 'block'; // Mostra o ícone de hambúrguer
-        closeIcon.style.display = 'none'; // Esconde o ícone de fechar
-        navbar.classList.remove('menu-open'); // Remove classe da navbar
-    }
+    menuIcon.addEventListener('click', toggleMenu);
+    closeIcon.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', toggleMenu); // Fecha o menu ao clicar fora
 
-    // 4. Adiciona os ouvintes de evento de clique
-    // Ao clicar no ícone de hambúrguer, abre o menu
-    if (menuIcon) {
-        menuIcon.addEventListener('click', openMenu);
-    }
-
-    // Ao clicar no ícone de fechar, fecha o menu
-    if (closeIcon) {
-        closeIcon.addEventListener('click', closeMenu);
-    }
-    
-    // Opcional: Fechar o menu ao clicar em um link interno (para usabilidade)
+    // Fecha o menu quando um link é clicado (útil para links internos)
     const menuLinks = sideMenu.querySelectorAll('a');
     menuLinks.forEach(link => {
-        link.addEventListener('click', closeMenu);
+        link.addEventListener('click', () => {
+            if (sideMenu.classList.contains('open')) {
+                toggleMenu();
+            }
+        });
     });
-
-    // Opcional: Inicialmente, o ícone de fechar deve estar escondido
-    closeIcon.style.display = 'none';
 });
