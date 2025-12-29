@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -7,47 +7,136 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* Variáveis de Cores e Tipografia */
+        :root {
+            --primary-color: #193D5B; /* Azul Profundo / Navy */
+            --accent-color: #007bff; /* Azul de Destaque para Links */
+            --background-color: #F8F9FA; /* Fundo Muito Claro */
+            --text-color: #343A40; /* Texto Principal (Cinza Escuro) */
+            --border-color: #DEE2E6; /* Cor da Borda Leve */
+            --font-stack: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f4f4f9;
+            font-family: var(--font-stack);
+            margin: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
         }
-        h1 {
-            color: #333;
-            text-align: center;
-            margin-top: 20px; /* Adiciona um espaço após o menu de navegação */
-        }
-        table {
-            width: 80%;
-            margin: 20px auto;
-            border-collapse: collapse;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            background-color: #fff;
-        }
-        th, td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        th {
-            background-color: #007bff;
+
+        /* --- Estilo da Navegação (Header e Menu) --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: var(--primary-color);
             color: white;
-            text-transform: uppercase;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        tr:hover {
-            background-color: #f1f1f1;
+        .logo p {
+            margin: 0;
+            font-size: 1.5em;
+            font-weight: 600;
         }
-        a {
-            color: #007bff;
+        .menu-icon, .close-icon {
+            cursor: pointer;
+            font-size: 1.2em;
+            color: white;
+        }
+        
+        /* Estilo Básico do Menu Lateral (Para o visual profissional) */
+        .side-menu {
+            background-color: #343A40; /* Fundo Escuro para Menu */
+            color: white;
+            width: 250px;
+            position: fixed;
+            height: 100%;
+            top: 0;
+            left: -250px; /* Escondido por padrão, precisa de JS para aparecer */
+            z-index: 1000;
+            padding-top: 60px;
+            transition: left 0.3s;
+        }
+        .menu-links a {
+            color: #ADB5BD; 
+            padding: 10px 20px;
+            display: block;
             text-decoration: none;
+            transition: background-color 0.2s;
         }
-        a:hover {
-            text-decoration: underline;
+        .menu-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
         }
-        /* Ajuste para não sobrepor o menu lateral, se ele estiver aberto */
+        .menu-header, .extra-content {
+            padding: 0 20px 10px 20px;
+            border-bottom: 1px solid #495057;
+            margin-bottom: 10px;
+        }
+
+        /* --- Área de Conteúdo Principal --- */
         .content-area {
+            padding: 20px;
+            min-height: 100vh;
             padding-left: 0; 
             transition: padding-left 0.3s;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin: 40px 0 30px 0;
+            font-size: 2em;
+            padding-bottom: 10px;
+        }
+
+        /* --- Estilo da Tabela (Foco no profissionalismo) --- */
+        table {
+            width: 90%; 
+            max-width: 1200px;
+            margin: 30px auto;
+            border-collapse: separate; 
+            border-spacing: 0;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08); /* Sombra suave */
+            background-color: #fff;
+            border-radius: 8px; /* Cantos arredondados */
+            overflow: hidden; 
+        }
+        thead {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        th, td {
+            padding: 15px 20px;
+            text-align: left;
+        }
+        th {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            letter-spacing: 0.5px;
+        }
+        td {
+            border-bottom: 1px solid var(--border-color);
+        }
+        tbody tr:last-child td {
+            border-bottom: none; /* Remove a borda da última linha */
+        }
+        tbody tr:hover {
+            background-color: #E9ECEF; /* Efeito hover profissional */
+        }
+        
+        /* --- Estilo de Links (Acessar) --- */
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        a:hover {
+            color: #0056b3; 
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -75,8 +164,7 @@
         </div>
 
         <ul class="menu-links">
-            <li><a href="https://danielcnn.github.io/matematicadinamica">Indice Geral</a></li>
-            <li><a href="https://www.youtube.com/@GeogebraOficial">Youtube - Geogebra</a></li>
+            <li><a href="https://www.youtube.com/@GeogebraOficial">Vestibular</a></li>
             <li><a href="https://t.me/+rGXRUKRdZgsyYjcx">Biblioteca - Telegram</a></li>
             <li><a href="https://www.tiktok.com/@geogebra25">Applets no Tiktok</a></li>
             <li><a href="https://amzn.to/4b9tnLs">Ebooks Geogebra</a></li>
@@ -107,32 +195,28 @@
                 <tr>
                     <td>FAMEMA</td>
                     <td>
-                         <a>Função Exponencial </a>
-                    </td>
+                        Função Exponencial </td>
                     <td>Matemática</td>
-                    <td><a href="https://danielcnn.github.io/matematicadinamica/vestibular-famema01.html" target="_blank">Acessar</a></td>
+                    <td><a href="http://danielcnn.github.io/modelosemgeogebra/vestibular-famema01" target="_blank">Acessar</a></td>
                 </tr>
                 <tr>
-                    <td>MACKENZIE</td>
+                    <td>**MACKENZIE**</td>
                     <td>
-                        <a>Reta Tangente</a>
-                    </td>
-                    <td>Geometria Analítica</td>
-                    <td><a href="https://danielcnn.github.io/matematicadinamica/vestibular-makenzie01" target="_blank">Acessar</a></td>
+                        Reta Tangente </td>
+                    <td>Cálculo/Geometria Analítica</td>
+                    <td><a href="https://danielcnn.github.io/modelosemgeogebra/vestibular-makenzie01" target="_blank">Acessar</a></td>
                 </tr>
                 <tr>
                     <td>**FAMEMA**</td>
                     <td>
-                        <a href="" target="_blank">Curvas de Solubilidade</a>
-                    </td>
+                        Curvas de Solubilidade </td>
                     <td>Química</td>
                     <td><a href="https://exemplo.com/exercicios/famema/solubilidade" target="_blank">Acessar</a></td>
                 </tr>
                 <tr>
                     <td>**MACKENZIE**</td>
                     <td>
-                        <a href="https://exemplo.com/exercicios/mackenzie/eletrodinamica" target="_blank">Eletrodinâmica (Circuitos)</a>
-                    </td>
+                        Eletrodinâmica (Circuitos) </td>
                     <td>Física</td>
                     <td><a href="https://exemplo.com/exercicios/mackenzie/eletrodinamica" target="_blank">Acessar</a></td>
                 </tr>
@@ -141,12 +225,4 @@
     </div>
     <script src="script.js"></script>
 </body>
-
 </html>
-
-
-
-
-
-
-
