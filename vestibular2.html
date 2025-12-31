@@ -1,0 +1,306 @@
+ <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matemática Dinâmica - Índice de Vestibulares</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Variáveis de Cores e Tipografia */
+        :root {
+            --primary-color: #193D5B; /* Azul Profundo / Navy */
+            --accent-color: #007bff; /* Azul de Destaque para Links */
+            --background-color: #F8F9FA; /* Fundo Muito Claro */
+            --text-color: #343A40; /* Texto Principal (Cinza Escuro) */
+            --border-color: #DEE2E6; /* Cor da Borda Leve */
+            --font-stack: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            font-family: var(--font-stack);
+            margin: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+        /* --- Estilo da Navegação (Header e Menu) --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .logo p {
+            margin: 0;
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+        .menu-icon, .close-icon {
+            cursor: pointer;
+            font-size: 1.2em;
+            color: white;
+        }
+        
+        /* Estilo Básico do Menu Lateral (Para o visual profissional) */
+        .side-menu {
+            background-color: #343A40; /* Fundo Escuro para Menu */
+            color: white;
+            width: 250px;
+            position: fixed;
+            height: 100%;
+            top: 0;
+            left: -250px; /* Escondido por padrão, precisa de JS para aparecer */
+            z-index: 1000;
+            padding-top: 60px;
+            transition: left 0.3s;
+        }
+        .menu-links a {
+            color: #ADB5BD; 
+            padding: 10px 20px;
+            display: block;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+        .menu-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        .menu-header, .extra-content {
+            padding: 0 20px 10px 20px;
+            border-bottom: 1px solid #495057;
+            margin-bottom: 10px;
+        }
+
+        /* --- Área de Conteúdo Principal --- */
+        .content-area {
+            padding: 20px;
+            min-height: 100vh;
+            padding-left: 0; 
+            transition: padding-left 0.3s;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin: 40px 0 30px 0;
+            font-size: 2em;
+            padding-bottom: 10px;
+        }
+
+        /* --- Estilo da Tabela (Foco no profissionalismo) --- */
+        table {
+            width: 90%; 
+            max-width: 1200px;
+            margin: 30px auto;
+            border-collapse: separate; 
+            border-spacing: 0;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08); /* Sombra suave */
+            background-color: #fff;
+            border-radius: 8px; /* Cantos arredondados */
+            overflow: hidden; 
+        }
+        thead {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        th, td {
+            padding: 15px 20px;
+            text-align: left;
+        }
+        th {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            letter-spacing: 0.5px;
+        }
+        td {
+            border-bottom: 1px solid var(--border-color);
+        }
+        tbody tr:last-child td {
+            border-bottom: none; /* Remove a borda da última linha */
+        }
+        tbody tr:hover {
+            background-color: #E9ECEF; /* Efeito hover profissional */
+        }
+        
+        /* --- Estilo de Links (Acessar) --- */
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        a:hover {
+            color: #0056b3; 
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="menu-icon" id="menu-icon">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="logo">
+            <p>Matemática Dinâmica</p>
+        </div>
+        <div class="close-icon" id="close-icon">
+            <i class="fas fa-times"></i>
+        </div>
+    </header>
+
+    <nav class="side-menu" id="side-menu">
+        <div class="menu-header">
+            <a href="#" class="menu-title main-link">Sobre</a>
+            <a href="#" class="menu-title main-link active"></a>
+            <p class="menu-description">
+                Estamos todos conectados
+            </p>
+        </div>
+
+        <ul class="menu-links">
+           <li><a href="https://danielcnn.github.io/matematicadinamica"></i>🌐 Indice Geral</a></li>
+            <li><a href="https://danielcnn.github.io/matematicadinamica/vestibular"><i class="fas fa-graduation-cap"></i> Vestibular</a></li>
+          <li><a href="https://danielcnn.github.io/matematicadinamica/quiz"><i class="fas fa-graduation-cap"></i> Quiz e Tutoriais</a></li>
+            <li><a href="https://t.me/+rGXRUKRdZgsyYjcx"><i class="fab fa-telegram-plane"></i> Biblioteca - Telegram</a></li>
+            <li><a href="https://www.tiktok.com/@geogebra25"><i class="fab fa-tiktok"></i> Applets no Tiktok</a></li>
+            <li><a href="https://amzn.to/4b9tnLs"><i class="fas fa-book-open"></i> Ebooks GeoGebra</a></li>
+            <li><a href="https://amzn.to/4pWvLJZ"><i class="fas fa-calculator"></i> Ebooks Matemática</a></li>
+            
+        </ul>
+
+        <div class="extra-content">
+            <li><a href="https://danielcnn.github.io/modelosemgeogebra">Site antigo 2025</a></li>
+            <p>Siga nossos canais, e faça matemática.</p>
+        </div>
+    </nav>
+    
+    <div class="content-area">
+
+        <h1>Índice de Assuntos e Exercícios por Vestibular</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Instituição</th>
+                    <th>Assunto (Tópico)</th>
+                    <th>Matéria</th>
+                    <th>Acesso Rápido</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>FAMEMA</td>
+                    <td>
+                        Função Exponencial </td>
+                    <td>Matemática</td>
+                    <td><a href="https://www.geogebra.org/m/wz33pv4y" target="_blank">Acessar</a></td>
+                </tr>
+                <tr>
+                    <td>MACKENZIE</td>
+                    <td>
+                        Reta Tangente </td>
+                    <td>Cálculo/Geometria Analítica</td>
+                    <td><a href="https://www.geogebra.org/m/gmscd9av" target="_blank">Acessar</a></td>
+                </tr>
+                <tr>
+                    <td>FUVEST</td>
+                    <td>
+                        Ângulo máximo </td>
+                    <td>Geometria</td>
+                    <td><a href="https://www.geogebra.org/m/byzvk5wt" target="_blank">Acessar</a></td>
+                </tr>
+                <tr>
+                    <td>SIRIO LIBANES</td>
+                    <td>
+                        Triângulo </td>
+                    <td>Geometria</td>
+                    <td><a href="https://www.geogebra.org/m/xxxm6s9q" target="_blank">Acessar</a></td>
+                </tr>
+
+
+
+              <tr>
+                    <td>UNIP</td>
+                    <td>
+                        Arco e Circunferência </td>
+                    <td>Geometria</td>
+                    <td><a href="https://www.geogebra.org/m/mh3ewnny" target="_blank">Acessar</a></td>
+                </tr>
+
+
+             <tr>
+                    <td>MACKENZIE</td>
+                    <td>
+                        Progressões aritméticas </td>
+                    <td>Matemática</td>
+                    <td><a href="https://www.geogebra.org/m/arzbpefj" target="_blank">Acessar</a></td>
+                </tr>
+
+
+
+             <tr>
+                    <td>FUVEST</td>
+                    <td>
+                        Quadrilátero inscrito </td>
+                    <td>Geometria</td>
+                    <td><a href="https://www.geogebra.org/m/w2etg2bj" target="_blank">Acessar</a></td>
+                </tr>
+
+
+
+
+              
+
+
+             
+             <tr>
+                    <td>FUVEST</td>
+                    <td>
+                        Triângulo equilátero </td>
+                    <td>Geometria</td>
+                    <td><a href="https://www.geogebra.org/m/guyssxvj" target="_blank">Acessar</a></td>
+                </tr>
+
+
+             
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+             
+                </tbody>
+        </table>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
